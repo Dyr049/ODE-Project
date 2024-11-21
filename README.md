@@ -44,12 +44,13 @@
 - Es können Gruppen mit mehr als 2 User erstellt werden
 - Die Gruppen haben einen Namen, den man editieren kann
 
-### Sonstige
+### Sonstiges
 
 - Nachrichten können weitergeleitet werden in andere Channel/Rooms/Chats
 - Nachrichten können im nachhinein editiert werden
 - Nachrichten/User fixieren
-- 
+- Bilder senden
+
 
 
 
