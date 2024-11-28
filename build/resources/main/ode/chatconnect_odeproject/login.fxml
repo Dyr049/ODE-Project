@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ode.chatconnect_odeproject.Controller">
+   <children>
+      <AnchorPane fx:id="anchorPane_right" layoutX="527.0" prefHeight="600.0" prefWidth="375.0">
+         <children>
+            <Label fx:id="lbl_titel" layoutX="144.0" layoutY="278.0" text="LOGIN">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <AnchorPane fx:id="anchorPane_left" layoutY="-1.0" prefHeight="600.0" prefWidth="536.0" stylesheets="@style.css">
+         <children>
+            <Label fx:id="lbl_titel" layoutX="204.0" layoutY="46.0" text="Hallo!">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+            <Label layoutX="202.0" layoutY="112.0" text="Bitte geben Sie Ihre Daten ein">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TextField fx:id="lbl_mail" layoutX="157.0" layoutY="217.0" prefHeight="26.0" prefWidth="225.0" promptText="E-mail" />
+            <Button fx:id="btn_anmelden" layoutX="201.0" layoutY="345.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" text="Anmelden" />
+            <TextField fx:id="lbl_passwort" layoutX="157.0" layoutY="274.0" prefHeight="26.0" prefWidth="225.0" promptText="Password" />
+            <Label layoutX="202.0" layoutY="392.0" text="kein Account?">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="link_registration" layoutX="264.0" layoutY="389.0" text="hier Registrieren">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Hyperlink>
+         </children></AnchorPane>
+      <AnchorPane layoutX="536.0" prefHeight="600.0" prefWidth="375.0" visible="false">
+         <children>
+            <Label fx:id="lbl_titel" layoutX="108.0" layoutY="278.0" text="Registration">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="600.0" prefWidth="543.0" visible="false">
+         <children>
+            <Label fx:id="lbl_titel" layoutX="132.0" layoutY="62.0" text="Willkommen!">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+            <Label layoutX="201.0" layoutY="127.0" text="Bitte geben Sie Ihre Daten ein">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TextField fx:id="lbl_mail" layoutX="157.0" layoutY="250.0" prefHeight="26.0" prefWidth="225.0" promptText="E-mail" />
+            <Button fx:id="btn_registration" layoutX="198.0" layoutY="371.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" text="Registrieren" />
+            <TextField fx:id="lbl_passwort" layoutX="157.0" layoutY="307.0" prefHeight="26.0" prefWidth="225.0" promptText="Password" />
+            <Label layoutX="188.0" layoutY="414.0" text="bereits ein Account?">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="link_anmelden" layoutX="278.0" layoutY="411.0" text="hier Anmelden">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Hyperlink>
+            <TextField layoutX="157.0" layoutY="198.0" prefHeight="26.0" prefWidth="225.0" promptText="Name" />
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
