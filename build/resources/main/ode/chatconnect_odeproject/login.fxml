@@ -12,7 +12,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ode.chatconnect_odeproject.LoginController">
    <children>
-      <AnchorPane fx:id="anchorPane_left" prefHeight="600.0" prefWidth="900.0" stylesheets="@style.css" visible="false">
+      <AnchorPane fx:id="anchorPane_Login" prefHeight="600.0" prefWidth="900.0" stylesheets="@style.css">
          <children>
             <Label fx:id="lbl_titel" layoutX="392.0" layoutY="53.0" text="Hallo!">
                <font>
@@ -32,7 +32,7 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <Hyperlink fx:id="link_registration" layoutX="452.0" layoutY="420.0" text="hier Registrieren">
+            <Hyperlink fx:id="link_registration" layoutX="452.0" layoutY="420.0" onAction="#swapToRegistration" text="hier Registrieren">
                <font>
                   <Font size="10.0" />
                </font>
@@ -48,43 +48,43 @@
                </image>
             </ImageView>
          </children></AnchorPane>
-      <AnchorPane fx:id="anchorPane_left" prefHeight="600.0" prefWidth="906.0">
+      <AnchorPane fx:id="anchorPane_Registration" prefHeight="600.0" prefWidth="906.0" visible="false">
          <children>
-            <Label fx:id="lbl_titel" layoutX="68.0" layoutY="63.0" text="Willkommen bei ChatConnect!">
+            <Label fx:id="lbl_titel" layoutX="84.0" layoutY="62.0" text="Willkommen bei ChatConnect!">
                <font>
                   <Font size="50.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_info" layoutX="364.0" layoutY="130.0" text="Bitte geben Sie Ihre Daten ein">
+            <Label fx:id="lbl_info" layoutX="380.0" layoutY="129.0" text="Bitte geben Sie Ihre Daten ein">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_info" layoutX="351.0" layoutY="462.0" text="bereits ein Account?">
+            <Label fx:id="lbl_info" layoutX="368.0" layoutY="461.0" text="bereits ein Account?">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <Hyperlink fx:id="link_anmelden" layoutX="468.0" layoutY="459.0" text="hier Anmelden">
+            <Hyperlink fx:id="link_anmelden" layoutX="485.0" layoutY="458.0" onAction="#swapToLogin" text="hier Anmelden">
                <font>
                   <Font size="10.0" />
                </font>
             </Hyperlink>
-            <TextField fx:id="lbl_mail1" layoutX="311.0" layoutY="273.0" prefHeight="42.0" prefWidth="281.0" promptText="E-mail" />
-            <TextField fx:id="lbl_mail11" layoutX="311.0" layoutY="333.0" prefHeight="42.0" prefWidth="281.0" promptText="Passwort" />
-            <TextField fx:id="lbl_mail12" layoutX="311.0" layoutY="213.0" prefHeight="42.0" prefWidth="281.0" promptText="Name" />
-            <Button fx:id="btn_anmelden1" alignment="CENTER" layoutX="310.0" layoutY="404.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="282.0" text="Anmelden" />
-            <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="280.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+            <TextField fx:id="lbl_mail1" layoutX="328.0" layoutY="272.0" prefHeight="42.0" prefWidth="281.0" promptText="E-mail" />
+            <TextField fx:id="lbl_mail11" layoutX="328.0" layoutY="332.0" prefHeight="42.0" prefWidth="281.0" promptText="Passwort" />
+            <TextField fx:id="lbl_mail12" layoutX="328.0" layoutY="212.0" prefHeight="42.0" prefWidth="281.0" promptText="Name" />
+            <Button fx:id="btn_anmelden1" alignment="CENTER" layoutX="327.0" layoutY="403.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="282.0" text="Anmelden" />
+            <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="297.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@mailIcon.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="280.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="297.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@passwordIcon.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="280.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="297.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@personIcon.png" />
                </image>
