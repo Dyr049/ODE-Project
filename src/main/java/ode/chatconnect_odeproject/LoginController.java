@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class Controller {
+public class LoginController {
 
     @FXML
     public AnchorPane anchorPane_right;

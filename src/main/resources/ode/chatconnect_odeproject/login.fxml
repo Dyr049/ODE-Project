@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ode.chatconnect_odeproject.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ode.chatconnect_odeproject.LoginController">
    <children>
-      <AnchorPane fx:id="anchorPane_left" prefHeight="600.0" prefWidth="900.0" stylesheets="@style.css" visible="false">
+      <AnchorPane fx:id="anchorPane_left" prefHeight="600.0" prefWidth="900.0" stylesheets="@style.css">
          <children>
             <Label fx:id="lbl_titel" layoutX="392.0" layoutY="53.0" text="Hallo!">
                <font>
@@ -39,16 +39,16 @@
             </Hyperlink>
             <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="292.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../mailIcon.png" />
+                  <Image url="@mailIcon.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="292.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../passwordIcon.jpg" />
+                  <Image url="@passwordIcon.jpg" />
                </image>
             </ImageView>
          </children></AnchorPane>
-      <AnchorPane fx:id="anchorPane_left" prefHeight="600.0" prefWidth="906.0">
+      <AnchorPane fx:id="anchorPane_left" prefHeight="600.0" prefWidth="906.0" visible="false">
          <children>
             <Label fx:id="lbl_titel" layoutX="68.0" layoutY="63.0" text="Willkommen bei ChatConnect!">
                <font>
@@ -76,17 +76,17 @@
             <Button fx:id="btn_anmelden1" alignment="CENTER" layoutX="310.0" layoutY="404.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="282.0" text="Anmelden" />
             <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="280.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../mailIcon.png" />
+                  <Image url="@mailIcon.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="280.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../passwordIcon.jpg" />
+                  <Image url="@passwordIcon.jpg" />
                </image>
             </ImageView>
             <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="280.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../personIcon.png" />
+                  <Image url="@personIcon.png" />
                </image>
             </ImageView>
          </children>

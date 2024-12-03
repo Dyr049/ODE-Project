@@ -4,81 +4,91 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ode.chatconnect_odeproject.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ode.chatconnect_odeproject.LoginController">
    <children>
-      <AnchorPane fx:id="anchorPane_right" layoutX="527.0" prefHeight="600.0" prefWidth="375.0">
+      <AnchorPane fx:id="anchorPane_left" prefHeight="600.0" prefWidth="900.0" stylesheets="@style.css" visible="false">
          <children>
-            <Label fx:id="lbl_titel" layoutX="144.0" layoutY="278.0" text="LOGIN">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
-      <AnchorPane fx:id="anchorPane_left" layoutY="-1.0" prefHeight="600.0" prefWidth="536.0" stylesheets="@style.css">
-         <children>
-            <Label fx:id="lbl_titel" layoutX="204.0" layoutY="46.0" text="Hallo!">
+            <Label fx:id="lbl_titel" layoutX="392.0" layoutY="53.0" text="Hallo!">
                <font>
                   <Font size="50.0" />
                </font>
             </Label>
-            <Label layoutX="202.0" layoutY="112.0" text="Bitte geben Sie Ihre Daten ein">
+            <Label fx:id="lbl_info" layoutX="360.0" layoutY="131.0" text="Bitte geben Sie Ihre Anmeldeaten ein">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <TextField fx:id="lbl_mail" layoutX="157.0" layoutY="217.0" prefHeight="26.0" prefWidth="225.0" promptText="E-mail" />
-            <Button fx:id="btn_anmelden" layoutX="201.0" layoutY="345.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" text="Anmelden" />
-            <TextField fx:id="lbl_passwort" layoutX="157.0" layoutY="274.0" prefHeight="26.0" prefWidth="225.0" promptText="Password" />
-            <Label layoutX="202.0" layoutY="392.0" text="kein Account?">
+            <TextField fx:id="lbl_mail" layoutX="327.0" layoutY="223.0" prefHeight="42.0" prefWidth="281.0" promptText="E-mail" />
+            <Button fx:id="btn_anmelden" alignment="CENTER" layoutX="326.0" layoutY="364.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="282.0" text="Anmelden" />
+            <TextField fx:id="lbl_passwort" layoutX="327.0" layoutY="290.0" prefHeight="42.0" prefWidth="282.0" promptText="Password" />
+            <Label fx:id="lbl_info" layoutX="373.0" layoutY="423.0" text="kein Account?">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <Hyperlink fx:id="link_registration" layoutX="264.0" layoutY="389.0" text="hier Registrieren">
+            <Hyperlink fx:id="link_registration" layoutX="452.0" layoutY="420.0" text="hier Registrieren">
                <font>
                   <Font size="10.0" />
                </font>
             </Hyperlink>
+            <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="292.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@mailIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="292.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@passwordIcon.jpg" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
-      <AnchorPane layoutX="536.0" prefHeight="600.0" prefWidth="375.0" visible="false">
+      <AnchorPane fx:id="anchorPane_left" prefHeight="600.0" prefWidth="906.0">
          <children>
-            <Label fx:id="lbl_titel" layoutX="108.0" layoutY="278.0" text="Registration">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="600.0" prefWidth="543.0" visible="false">
-         <children>
-            <Label fx:id="lbl_titel" layoutX="132.0" layoutY="62.0" text="Willkommen!">
+            <Label fx:id="lbl_titel" layoutX="68.0" layoutY="63.0" text="Willkommen bei ChatConnect!">
                <font>
                   <Font size="50.0" />
                </font>
             </Label>
-            <Label layoutX="201.0" layoutY="127.0" text="Bitte geben Sie Ihre Daten ein">
+            <Label fx:id="lbl_info" layoutX="364.0" layoutY="130.0" text="Bitte geben Sie Ihre Daten ein">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <TextField fx:id="lbl_mail" layoutX="157.0" layoutY="250.0" prefHeight="26.0" prefWidth="225.0" promptText="E-mail" />
-            <Button fx:id="btn_registration" layoutX="198.0" layoutY="371.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" text="Registrieren" />
-            <TextField fx:id="lbl_passwort" layoutX="157.0" layoutY="307.0" prefHeight="26.0" prefWidth="225.0" promptText="Password" />
-            <Label layoutX="188.0" layoutY="414.0" text="bereits ein Account?">
+            <Label fx:id="lbl_info" layoutX="351.0" layoutY="462.0" text="bereits ein Account?">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <Hyperlink fx:id="link_anmelden" layoutX="278.0" layoutY="411.0" text="hier Anmelden">
+            <Hyperlink fx:id="link_anmelden" layoutX="468.0" layoutY="459.0" text="hier Anmelden">
                <font>
                   <Font size="10.0" />
                </font>
             </Hyperlink>
-            <TextField layoutX="157.0" layoutY="198.0" prefHeight="26.0" prefWidth="225.0" promptText="Name" />
+            <TextField fx:id="lbl_mail1" layoutX="311.0" layoutY="273.0" prefHeight="42.0" prefWidth="281.0" promptText="E-mail" />
+            <TextField fx:id="lbl_mail11" layoutX="311.0" layoutY="333.0" prefHeight="42.0" prefWidth="281.0" promptText="Passwort" />
+            <TextField fx:id="lbl_mail12" layoutX="311.0" layoutY="213.0" prefHeight="42.0" prefWidth="281.0" promptText="Name" />
+            <Button fx:id="btn_anmelden1" alignment="CENTER" layoutX="310.0" layoutY="404.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="282.0" text="Anmelden" />
+            <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="280.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@mailIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="280.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@passwordIcon.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="280.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@personIcon.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
