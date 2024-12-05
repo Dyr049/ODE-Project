@@ -12,6 +12,12 @@ import javafx.scene.layout.AnchorPane;
 public class ChatController {
 
     @FXML
+    public AnchorPane anchorPane_person1;
+
+    @FXML
+    public AnchorPane anchorPane_person2;
+
+    @FXML
     private Button btn_einstellungen;
 
     @FXML
@@ -56,8 +62,30 @@ public class ChatController {
         //hier sollte noch die Nachrichten für diesen Chat geladen werden
     }
 
+    // Extra Funktion für die Suche um die Suche Übersichtlicher zu gestalten
+    private void setVisibility(boolean person1Visibility, boolean person2Visibility){
+        anchorPane_person1.setVisible(person1Visibility);
+        anchorPane_person2.setVisible(person2Visibility);
+    }
+
+
+    // Die Suchfunktion: Mit einem addListener wird das Textfeld beobachtet und sobald der Inhalt mit einem der Namen der Personen übereinstimmt werden die Sichtbarkeiten aktualisiert
+    // dabei ist die Groß & Kleinschreibung egal
     @FXML
-    void sucheStart(InputMethodEvent event) {
+    void sucheStart(ActionEvent event) {
+
+        txt_search.textProperty().addListener((observable, oldValue, newValue) -> {
+
+            if (newValue.equalsIgnoreCase(btn_person1.getText())){
+                setVisibility(true, false);
+            } else if (newValue.equalsIgnoreCase(btn_person2.getText())){
+                setVisibility(false, true);
+            } else {
+                setVisibility(true, true);
+            }
+        });
+
+
 
     }
 
