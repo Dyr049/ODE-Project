@@ -35,7 +35,7 @@
                <children>
                   <TextField fx:id="txt_search" layoutX="15.0" layoutY="21.0" onAction="#sucheStart" prefHeight="29.0" prefWidth="190.0" promptText="Suchen...">
                      <font>
-                        <Font size="10.0" />
+                        <Font size="14.0" />
                      </font></TextField>
                   <VBox layoutX="9.0" layoutY="65.0" prefHeight="535.0" prefWidth="203.0">
                      <children>
@@ -63,7 +63,7 @@
                            </children></AnchorPane>
                      </children>
                   </VBox>
-                  <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="25.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="28.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@searchIcon.png" />
                      </image>
