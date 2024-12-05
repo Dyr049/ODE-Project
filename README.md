@@ -21,27 +21,27 @@
 
 ### Must have features
 
-- User kann sich mit seinem Anmeldedaten registrieren oder einloggen
-- Aus der Liste, wo sich alle User befinden, können User ausgewählt und Konversationen gestartet werden
-- In der Liste kann nach Usern gesucht werden
+[] User kann sich mit seinem Anmeldedaten registrieren oder einloggen
+[] Aus der Liste, wo sich alle User befinden, können User ausgewählt und Konversationen gestartet werden
+[x] In der Liste kann nach Usern gesucht werden
 
 ### Should have
 
-- UserInnen können einen Status angeben, der neben dem Namen erscheint
-- User kann sein Passwort/Benutzernamen ändern
-- Zeitanzeige beim verschicktem Nachricht
+[] UserInnen können einen Status angeben, der neben dem Namen erscheint
+[] User kann sein Passwort/Benutzernamen ändern
+[] Zeitanzeige beim verschicktem Nachricht
 
 ### Nice to have
 
-- UserInnen können Profilbilder hinterlegen und ändern
-- Nachdem der User sich eingeloggt hat werden seine Konversationen geladen
-- Man kann Nachrichten innerhalb eines Chats durchsuchen
+[] UserInnen können Profilbilder hinterlegen und ändern
+[] Nachdem der User sich eingeloggt hat werden seine Konversationen geladen
+[] Man kann Nachrichten innerhalb eines Chats durchsuchen
 
 ### Overkill
 
-- Emojis können abgeschickt werden mit API
-- One Time Message, button der eine Nachricht abschickt aber nicht im Hintergrund speichert
-- User können Bilder senden
+[] Emojis können abgeschickt werden mit API
+[] One Time Message, button der eine Nachricht abschickt aber nicht im Hintergrund speichert
+[] User können Bilder senden
 
 
 
