@@ -85,8 +85,6 @@ public class ChatController {
             }
         });
 
-
-
     }
 
     @FXML
