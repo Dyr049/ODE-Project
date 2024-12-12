@@ -25,7 +25,7 @@
                </font>
             </Label>
             <TextField fx:id="lbl_mail" layoutX="327.0" layoutY="223.0" prefHeight="42.0" prefWidth="281.0" promptText="E-mail" />
-            <Button fx:id="btn_anmelden" alignment="CENTER" layoutX="326.0" layoutY="364.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="282.0" text="Anmelden" />
+            <Button fx:id="btn_anmelden" alignment="CENTER" layoutX="326.0" layoutY="364.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="282.0" text="Anmelden" onAction="#login"/>
             <TextField fx:id="lbl_passwort" layoutX="327.0" layoutY="290.0" prefHeight="42.0" prefWidth="282.0" promptText="Password" />
             <Label fx:id="lbl_info" layoutX="373.0" layoutY="423.0" text="kein Account?">
                <font>
@@ -70,10 +70,10 @@
                   <Font size="10.0" />
                </font>
             </Hyperlink>
-            <TextField fx:id="lbl_mail1" layoutX="328.0" layoutY="272.0" prefHeight="42.0" prefWidth="281.0" promptText="E-mail" />
-            <TextField fx:id="lbl_mail11" layoutX="328.0" layoutY="332.0" prefHeight="42.0" prefWidth="281.0" promptText="Passwort" />
+            <TextField fx:id="txt_register_mail" layoutX="328.0" layoutY="272.0" prefHeight="42.0" prefWidth="281.0" promptText="E-mail" />
+            <TextField fx:id="txt_register_password" layoutX="328.0" layoutY="332.0" prefHeight="42.0" prefWidth="281.0" promptText="Passwort" />
             <TextField fx:id="lbl_mail12" layoutX="328.0" layoutY="212.0" prefHeight="42.0" prefWidth="281.0" promptText="Name" />
-            <Button fx:id="btn_anmelden1" alignment="CENTER" layoutX="327.0" layoutY="403.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="282.0" text="Anmelden" />
+            <Button fx:id="btn_anmelden1" alignment="CENTER" layoutX="327.0" layoutY="403.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="282.0" text="Registieren" onAction="#register" />
             <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="297.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@mailIcon.png" />
