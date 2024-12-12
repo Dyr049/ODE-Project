@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class UserManager {
     private Map<String, String> userDatabase = new HashMap<>();
-    private final String filePath = "users.txt"; // Speicherort der Benutzerdaten
+    private final String filePath = "user.txt"; // Speicherort der Benutzerdaten
 
     public UserManager() {
         loadFromFile(); // Benutzerdaten beim Start laden
