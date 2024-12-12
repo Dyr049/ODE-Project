@@ -4,8 +4,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class LoginController {
+
+
+
     private UserManager userManager = new UserManager(); // Benutzerverwaltung
     @FXML
     public AnchorPane anchorPane_Login;
@@ -54,33 +63,60 @@ public class LoginController {
     }
 
 
+    public void switchToChatView() {
+        try {
+            // Lade die `chat.fxml`
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chat.fxml"));
+            Parent chatRoot = fxmlLoader.load();
+
+            // Hole die aktuelle Stage
+            Stage stage = (Stage) anchorPane_Login.getScene().getWindow();
+
+            // Setze die neue Szene
+            stage.setScene(new Scene(chatRoot));
+            stage.setTitle("Chat Connect - Chat");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Fehler beim Laden der Chatansicht: " + e.getMessage());
+        }
+    }
+
+    public void login(ActionEvent actionEvent) {
+        String email = lbl_mail.getText();
+        String password = lbl_passwort.getText();
+
+        if (userManager.login(email, password)) {
+            System.out.println("Anmeldung erfolgreich!");
+            switchToChatView(); // Wechsel zur Chatansicht
+        } else {
+            System.out.println("Ungültige E-Mail oder Passwort.");
+            showAlert("Fehler", "Ungültige E-Mail oder Passwort.", Alert.AlertType.ERROR);
+        }
+    }
 
 
-        // Anmeldung
-        public void login (ActionEvent actionEvent){
-            String email = lbl_mail.getText();
-            String password = lbl_passwort.getText();
+    // Registrierung
+    public void register(ActionEvent actionEvent) {
+        String email = txt_register_mail.getText();
+        String password = txt_register_password.getText();
 
-            if (userManager.login(email, password)) {
-                showAlert("Erfolg", "Anmeldung erfolgreich!", Alert.AlertType.INFORMATION);
-            } else {
-                showAlert("Fehler", "Ungültige E-Mail oder Passwort.", Alert.AlertType.ERROR);
-            }
+        if (email.isEmpty() || password.isEmpty()) {
+            showAlert("Fehler", "E-Mail und Passwort dürfen nicht leer sein.", Alert.AlertType.ERROR);
+            return;
         }
 
-        // Registrierung
-        public void register (ActionEvent actionEvent){
-            String email = txt_register_mail.getText();
-            String password = txt_register_password.getText();
-
-            if (userManager.register(email, password)) {
-                showAlert("Erfolg", "Registrierung erfolgreich!", Alert.AlertType.INFORMATION);
-            } else {
-                showAlert("Fehler", "E-Mail existiert bereits.", Alert.AlertType.ERROR);
-            }
+        if (userManager.register(email, password)) {
+            System.out.println("Registrierung erfolgreich!");
+            showAlert("Erfolg", "Registrierung erfolgreich!", Alert.AlertType.INFORMATION);
+        } else {
+            System.out.println("Benutzer existiert bereits.");
+            showAlert("Fehler", "Benutzer mit dieser E-Mail existiert bereits.", Alert.AlertType.ERROR);
         }
+    }
 
-        private void showAlert (String title, String message, Alert.AlertType alertType){
+
+    private void showAlert (String title, String message, Alert.AlertType alertType){
             Alert alert = new Alert(alertType);
             alert.setTitle(title);
             alert.setContentText(message);
