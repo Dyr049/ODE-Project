@@ -58,7 +58,7 @@
 ### Todo bis Dienstag 26.11
 
 - Mockup erstellen für die Anzeige (Alle komponente müssen ersichtlich sein, sollte schön aussehen, das Programm Figma könnte dabei verwendet werden, auch die AnmeldeGUI) --> kann von Chatgpt hilfe genommen werden
-- Klassendiagramm --> kann von Chatgpt hilfe genommen werden
+- Klassendiagramm
 - JavaFX nachdem der Mockup erstellt wurde
 
 
