@@ -13,24 +13,30 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ode.chatconnect_odeproject.ChatController">
    <children>
       <HBox prefHeight="600.0" prefWidth="900.0">
          <children>
             <AnchorPane fx:id="pane_left" prefHeight="600.0" prefWidth="139.0">
                <children>
-                  <ImageView fitHeight="101.0" fitWidth="106.0" layoutX="15.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="101.0" fitWidth="106.0" layoutX="17.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@personIcon.png" />
                      </image></ImageView>
-                  <Button fx:id="btn_einstellungen" layoutX="14.0" layoutY="266.0" mnemonicParsing="false" onAction="#swapToEinstellungen" prefHeight="35.0" prefWidth="121.0" text="Einstellungen" />
-                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="15.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
+                  <Button fx:id="btn_einstellungen" layoutX="7.0" layoutY="283.0" mnemonicParsing="false" onAction="#swapToEinstellungen" prefHeight="35.0" prefWidth="121.0" text="Einstellungen">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Button>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="15.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@settingsIcon.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="lbl_personNameMessage1" layoutX="27.0" layoutY="226.0" text="Diyar Celik" textFill="WHITE">
+                     <font>
+                        <Font name="Dubai Medium" size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="pane_middle" prefHeight="600.0" prefWidth="224.0">
