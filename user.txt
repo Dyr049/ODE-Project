@@ -1,4 +1,3 @@
-test,55555
-Diyar,12345
-Omar,admin
-Mateutz,passwort
+Diyar Celik,diyar,12345
+Mateusz Makola,mateusz,passwort
+Omar Masoud,omar,admin
