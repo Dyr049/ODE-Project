@@ -1,10 +1,12 @@
 package ode.chatconnect_odeproject;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class UserManager {
-    private Map<String, String> userDatabase = new HashMap<>();
+    private Map<String, String[]> userDatabase = new HashMap<>();
     private final String filePath = "user.txt"; // Speicherort der Benutzerdaten
 
     public UserManager() {
@@ -12,14 +14,18 @@ public class UserManager {
     }
 
     // Login-Funktion
-    public boolean login(String email, String password) {
-        return userDatabase.containsKey(email) && userDatabase.get(email).equals(password);
+    public boolean login(String username, String password) {
+        return userDatabase.containsKey(username) && userDatabase.get(username)[1].equals(password);
+    }
+
+    public String getName(String username) {
+        return userDatabase.containsKey(username) ? userDatabase.get(username)[0] : null;
     }
 
     // Registrierung
-    public boolean register(String email, String password) {
-        if (!userDatabase.containsKey(email)) {
-            userDatabase.put(email, password);
+    public boolean register(String name, String username, String password) {
+        if (!userDatabase.containsKey(username)) {
+            userDatabase.put(username, new String[]{name, password});
             saveToFile(); // Daten nach Registrierung speichern
             return true;
         }
@@ -29,8 +35,8 @@ public class UserManager {
     // Benutzerdaten in Datei speichern
     private void saveToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            for (Map.Entry<String, String> entry : userDatabase.entrySet()) {
-                writer.write(entry.getKey() + "," + entry.getValue());
+            for (Map.Entry<String, String[]> entry : userDatabase.entrySet()) {
+                writer.write(entry.getValue()[0] + "," + entry.getKey() + "," + entry.getValue()[1]);
                 writer.newLine();
             }
         } catch (IOException e) {
@@ -46,8 +52,8 @@ public class UserManager {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] parts = line.split(",");
-                    if (parts.length == 2) {
-                        userDatabase.put(parts[0], parts[1]);
+                    if (parts.length == 3) {
+                        userDatabase.put(parts[1], new String[]{parts[0], parts[2]});
                     }
                 }
             } catch (IOException e) {

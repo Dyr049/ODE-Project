@@ -12,6 +12,13 @@ import javafx.scene.layout.AnchorPane;
 public class ChatController {
 
     @FXML
+    private Label lbl_personNameMessage1;
+
+    private String loggedInUser;
+
+
+
+    @FXML
     public AnchorPane anchorPane_person1;
 
     @FXML
@@ -66,6 +73,11 @@ public class ChatController {
     private void setVisibility(boolean person1Visibility, boolean person2Visibility){
         anchorPane_person1.setVisible(person1Visibility);
         anchorPane_person2.setVisible(person2Visibility);
+    }
+
+    public void setLoggedInUser(String name) {
+        this.loggedInUser = name;
+        lbl_personNameMessage1.setText(name);
     }
 
 
