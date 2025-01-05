@@ -3,11 +3,9 @@ package ode.chatconnect_odeproject.ui;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import ode.chatconnect_odeproject.client.LoginManager;
-
-import ode.chatconnect_odeproject.client.*;
-import ode.chatconnect_odeproject.server.*;
 
 import java.util.function.Consumer;
 
@@ -24,32 +22,41 @@ public class LoginWindow {
     public void show(Stage primaryStage) {
         // Layout für das Login-Fenster erstellen
         AnchorPane loginPane = new AnchorPane();
-        loginPane.setPrefSize(300, 250);
+        loginPane.setPrefSize(900, 600);
 
-        // Username-Label und Textfeld
-        Label lblUsername = new Label("Username:");
-        lblUsername.setLayoutX(50);
-        lblUsername.setLayoutY(40);
+        // Titel und Untertitel
+
+        Label lbl_titel = new Label("Hallo!");
+        lbl_titel.setLayoutX(380);
+        lbl_titel.setLayoutY(53);
+        lbl_titel.setId("lbl_titel");
+
+        Label lbl_titel2 = new Label("Bitte geben Sie Ihre Anmeldedaten ein");
+        lbl_titel2.setLayoutX(350);
+        lbl_titel2.setLayoutY(131);
+        lbl_titel2.setId("lbl_titel2");
+
+        // Username Textfeld
 
         TextField txtUsername = new TextField();
-        txtUsername.setLayoutX(50);
-        txtUsername.setLayoutY(70);
+        txtUsername.setLayoutX(350);
+        txtUsername.setLayoutY(223);
         txtUsername.setPrefWidth(200);
+        txtUsername.setPromptText("Username");
 
-        // Password-Label und Passwortfeld
-        Label lblPassword = new Label("Password:");
-        lblPassword.setLayoutX(50);
-        lblPassword.setLayoutY(100);
+
+        //Passwortfeld
 
         PasswordField txtPassword = new PasswordField();
-        txtPassword.setLayoutX(50);
-        txtPassword.setLayoutY(130);
+        txtPassword.setLayoutX(350);
+        txtPassword.setLayoutY(290);
         txtPassword.setPrefWidth(200);
+        txtPassword.setPromptText("Password");
 
         // Login-Button
         Button btnLogin = new Button("Login");
-        btnLogin.setLayoutX(50);
-        btnLogin.setLayoutY(180);
+        btnLogin.setLayoutX(350);
+        btnLogin.setLayoutY(364);
         btnLogin.setOnAction(e -> {
             String username = txtUsername.getText();
             String password = txtPassword.getText();
@@ -63,15 +70,17 @@ public class LoginWindow {
 
         // Registrieren-Button
         Button btnRegister = new Button("Registrieren");
-        btnRegister.setLayoutX(150);
-        btnRegister.setLayoutY(180);
+        btnRegister.setLayoutX(430);
+        btnRegister.setLayoutY(364);
         btnRegister.setOnAction(e -> showRegisterWindow());
 
         // Alle Elemente hinzufügen
-        loginPane.getChildren().addAll(lblUsername, txtUsername, lblPassword, txtPassword, btnLogin, btnRegister);
+        loginPane.getChildren().addAll(lbl_titel, lbl_titel2, txtUsername, txtPassword, btnLogin, btnRegister);
 
         // Szene und Fenster anzeigen
         Scene loginScene = new Scene(loginPane);
+        loginScene.getStylesheets().add(getClass().getResource("/ode/chatconnect_odeproject/style.css").toExternalForm());
+
         primaryStage.setScene(loginScene);
         primaryStage.setTitle("Login");
         primaryStage.show();
