@@ -1,3 +1,0 @@
-Diyar Celik,diyar,12345
-Mateusz Makola,mateusz,passwort
-Omar Masoud,omar,admin
