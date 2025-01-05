@@ -25,6 +25,8 @@ public class MainWindow {
     private ObjectInputStream in;
 
     private TextArea txt_chatArea;
+    private Label lbl_chatPersonName;
+
     private String currentReceiver;
     private VBox contactList;
     private final Map<String, StringBuilder> chatHistories = new HashMap<>();
@@ -44,10 +46,12 @@ public class MainWindow {
         contactList = new VBox();
         AnchorPane paneLeft = UIElements.createLeftPane(username);
         AnchorPane paneMiddle = UIElements.createMiddlePane(contactList);
+
         txt_chatArea = new TextArea();
+        lbl_chatPersonName = new Label();
         TextField txt_message = new TextField();
-        Button btn_senden = new Button("send");
-        AnchorPane paneRight = UIElements.createRightPane(txt_chatArea, username, btn_senden, txt_message);
+        Button btn_senden = new Button("senden");
+        AnchorPane paneRight = UIElements.createRightPane(txt_chatArea, username, btn_senden, txt_message, lbl_chatPersonName);
 
         mainLayout.getChildren().addAll(paneLeft, paneMiddle, paneRight);
         root.getChildren().add(mainLayout);
@@ -101,9 +105,9 @@ public class MainWindow {
             if (!user.equals(username)) {
                 chatHistories.put(user, new StringBuilder());
 
-                Button userButton = new Button("Chat mit " + user);
+                Button userButton = new Button(" " + user);
                 userButton.setPrefSize(190, 40);
-                userButton.setStyle("-fx-font-size: 14px;");
+                userButton.setId("btn_person");
                 userButton.setOnAction(e -> setChatPartner(user));
 
                 contactList.getChildren().add(userButton);
@@ -114,7 +118,7 @@ public class MainWindow {
     private void setChatPartner(String partner) {
         currentReceiver = partner;
         txt_chatArea.setText(chatHistories.get(partner).toString());
-        txt_chatArea.appendText("Du chattest jetzt mit " + partner + "\n");
+        lbl_chatPersonName.setText(partner);
     }
 
     private void handleIncomingMessage(String message) {
@@ -128,6 +132,7 @@ public class MainWindow {
 
                 if (sender.equals(currentReceiver)) {
                     Platform.runLater(() -> txt_chatArea.appendText(sender + ": " + msg + "\n"));
+
                 }
             }
         }
@@ -135,7 +140,6 @@ public class MainWindow {
 
     private void sendMessage(String message) {
         if (currentReceiver == null) {
-            txt_chatArea.appendText("Bitte wähle einen Chat-Partner aus.\n");
             return;
         }
         try {
@@ -148,4 +152,5 @@ public class MainWindow {
             txt_chatArea.appendText("Nachricht konnte nicht gesendet werden.\n");
         }
     }
+
 }
