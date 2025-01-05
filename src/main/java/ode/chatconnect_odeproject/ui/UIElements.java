@@ -14,6 +14,7 @@ public class UIElements {
     public static AnchorPane createLeftPane(String username) {
         AnchorPane paneLeft = new AnchorPane();
         paneLeft.setPrefSize(139, 600);
+        paneLeft.setId("pane-left");
 
         Label lbl_PersonName = new Label(username);
         lbl_PersonName.setLayoutX(27);
@@ -29,12 +30,12 @@ public class UIElements {
     public static AnchorPane createMiddlePane(VBox contactList) {
         AnchorPane paneMiddle = new AnchorPane();
         paneMiddle.setPrefSize(224, 600);
+        paneMiddle.setId("pane_middle");
 
         contactList.setLayoutX(9);
         contactList.setLayoutY(65);
         contactList.setPrefSize(203, 535);
         contactList.setSpacing(10);
-        contactList.setStyle("-fx-background-color: #FFFFFF;");
 
         paneMiddle.getChildren().add(contactList);
         return paneMiddle;
@@ -44,6 +45,7 @@ public class UIElements {
     public static AnchorPane createRightPane(TextArea txt_chatArea, String username, Button sendButton, TextField messageField) {
         AnchorPane paneRight = new AnchorPane();
         paneRight.setPrefSize(526, 600);
+        paneRight.setId("pane-right");
 
         VBox chatBox = new VBox();
         chatBox.setPrefSize(545, 600);
@@ -52,7 +54,7 @@ public class UIElements {
         chatHeader.setPrefSize(545, 66);
         chatHeader.setStyle("-fx-opacity: 0.51;");
 
-        Label lbl_chatPersonName = new Label("Person Name");
+        Label lbl_chatPersonName = new Label(username);
         lbl_chatPersonName.setLayoutX(30);
         lbl_chatPersonName.setLayoutY(12);
         lbl_chatPersonName.setFont(new Font("Dubai Medium", 18));
@@ -67,15 +69,18 @@ public class UIElements {
         txt_chatArea.setLayoutX(3);
         txt_chatArea.setLayoutY(3);
         txt_chatArea.setPrefSize(539, 476);
+        txt_chatArea.setId("txt_area");
 
         messageField.setLayoutX(20);
         messageField.setLayoutY(489);
         messageField.setPrefSize(401, 41);
         messageField.setPromptText("Nachricht");
+        messageField.setId("txt_message");
 
         sendButton.setLayoutX(432);
         sendButton.setLayoutY(493);
         sendButton.setPrefSize(67, 32);
+        sendButton.setId("sendButton");
 
         chatBody.getChildren().addAll(txt_chatArea, messageField, sendButton);
 

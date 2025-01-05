@@ -53,6 +53,8 @@ public class MainWindow {
         root.getChildren().add(mainLayout);
 
         Scene mainScene = new Scene(root);
+        mainScene.getStylesheets().add(getClass().getResource("/ode/chatconnect_odeproject/style.css").toExternalForm());
+
         primaryStage.setScene(mainScene);
         primaryStage.setTitle("Chat App");
         primaryStage.show();
