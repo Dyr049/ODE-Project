@@ -158,13 +158,20 @@ public class ChatServer {
         private void sendMessageToClient(String receiver, String message) throws IOException {
             synchronized (clients) {
                 if (clients.containsKey(receiver)) {
-                    clients.get(receiver).writeObject(message);
+                    // Zeitstempel hinzufügen
+                    String timestamp = new java.text.SimpleDateFormat("HH:mm").format(new java.util.Date());
+                    String formattedMessage = message + " (" + timestamp + ")";
+
+                    // Nachricht an den Empfänger senden
+                    clients.get(receiver).writeObject(formattedMessage);
                     clients.get(receiver).flush();
                 } else {
                     out.writeObject("Benutzer " + receiver + " ist nicht online.");
                 }
             }
         }
+
+
 
 
         /**
