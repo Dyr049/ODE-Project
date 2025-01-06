@@ -1,3 +1,10 @@
+// --- PACKAGE UI ---
+
+/**
+ * Klasse LoginWindow
+ *
+ * Stellt die Benutzeroberfläche für die Anmeldung und Registrierung bereit.
+ */
 package ode.chatconnect_odeproject.ui;
 
 import javafx.scene.Scene;
@@ -12,13 +19,29 @@ import java.util.function.Consumer;
 
 public class LoginWindow {
 
+
+
     private final LoginManager loginManager;
     private final Consumer<String> onLoginSuccess;
+
+
+    /**
+     * Konstruktor, der den Login-Manager und eine Callback-Funktion für erfolgreiche Anmeldungen initialisiert.
+     *
+     * @param loginManager   Der Login-Manager, der für die Validierung der Benutzeranmeldedaten zuständig ist.
+     * @param onLoginSuccess Callback-Funktion, die bei erfolgreicher Anmeldung aufgerufen wird.
+     */
 
     public LoginWindow(LoginManager loginManager, Consumer<String> onLoginSuccess) {
         this.loginManager = loginManager;
         this.onLoginSuccess = onLoginSuccess;
     }
+
+    /**
+     * Zeigt das Login-Fenster an und initialisiert die Benutzeroberfläche.
+     *
+     * @param primaryStage Die Hauptbühne der JavaFX-Anwendung.
+     */
 
     public void show(Stage primaryStage) {
         // Layout für das Login-Fenster erstellen
@@ -111,6 +134,10 @@ public class LoginWindow {
         primaryStage.show();
     }
 
+    /**
+     * Zeigt eine Fehlermeldung bei ungültigen Anmeldedaten an.
+     */
+
     private void showLoginError() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Login-Fehler");
@@ -118,6 +145,11 @@ public class LoginWindow {
         alert.setContentText("Bitte überprüfe deinen Benutzernamen und dein Passwort.");
         alert.showAndWait();
     }
+
+
+    /**
+     * Zeigt das Registrierungsfenster an und ermöglicht die Eingabe neuer Benutzerdaten.
+     */
 
     private void showRegisterWindow() {
         Stage registerStage = new Stage();

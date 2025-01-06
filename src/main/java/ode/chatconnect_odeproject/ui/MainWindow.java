@@ -1,3 +1,9 @@
+/**
+ * Klasse MainWindow
+ *
+ * Haupt-Benutzeroberfläche, die die Chat-Ansicht und die Benutzerliste enthält.
+ */
+
 package ode.chatconnect_odeproject.ui;
 
 import javafx.application.Platform;
@@ -20,6 +26,12 @@ import ode.chatconnect_odeproject.client.*;
 import ode.chatconnect_odeproject.server.*;
 
 public class MainWindow {
+
+    /**
+     * Zeigt das Hauptfenster der Anwendung an.
+     *
+     * @param primaryStage Die Hauptbühne der JavaFX-Anwendung.
+     */
     private final String username;
     private ObjectOutputStream out;
     private ObjectInputStream in;
@@ -31,9 +43,22 @@ public class MainWindow {
     private VBox contactList;
     private final Map<String, StringBuilder> chatHistories = new HashMap<>();
 
+    /**
+     * Konstruktor, der den Benutzernamen speichert.
+     *
+     * @param username Der Benutzername des angemeldeten Benutzers.
+     */
+
     public MainWindow(String username) {
         this.username = username;
     }
+
+
+    /**
+     * Zeigt das Hauptfenster der Anwendung an und initialisiert die Benutzeroberfläche.
+     *
+     * @param primaryStage Die Hauptbühne der JavaFX-Anwendung.
+     */
 
     public void show(Stage primaryStage) {
         Pane root = new Pane();
@@ -65,6 +90,14 @@ public class MainWindow {
 
         connectToServer(txt_message, btn_senden);
     }
+
+
+    /**
+     * Verbindet den Client mit dem Server und startet den Empfang von Nachrichten.
+     *
+     * @param txt_message Das Textfeld für die Eingabe von Nachrichten.
+     * @param btn_senden  Der Button zum Senden von Nachrichten.
+     */
 
     private void connectToServer(TextField txt_message, Button btn_senden) {
         try {
@@ -98,6 +131,10 @@ public class MainWindow {
         btn_senden.setOnAction(e -> sendMessage(txt_message.getText()));
     }
 
+    /**
+     * Initialisiert die Chat-Verläufe und fügt die Benutzer zur Kontaktliste hinzu.
+     */
+
     private void initializeChatHistories() {
         String[] users = {"Diyar", "Omar", "Mateusz"};
 
@@ -115,11 +152,23 @@ public class MainWindow {
         }
     }
 
+    /**
+     * Setzt den aktuellen Chat-Partner und zeigt den Verlauf an.
+     *
+     * @param partner Der Benutzername des aktuellen Chat-Partners.
+     */
+
     private void setChatPartner(String partner) {
         currentReceiver = partner;
         txt_chatArea.setText(chatHistories.get(partner).toString());
         lbl_chatPersonName.setText(partner);
     }
+
+    /**
+     * Verarbeitet eingehende Nachrichten vom Server.
+     *
+     * @param message Die eingehende Nachricht.
+     */
 
     private void handleIncomingMessage(String message) {
         if (message.contains(":")) {
@@ -137,6 +186,13 @@ public class MainWindow {
             }
         }
     }
+
+
+    /**
+     * Sendet eine Nachricht an den aktuellen Chat-Partner.
+     *
+     * @param message Die Nachricht, die gesendet werden soll.
+     */
 
     private void sendMessage(String message) {
         if (currentReceiver == null) {

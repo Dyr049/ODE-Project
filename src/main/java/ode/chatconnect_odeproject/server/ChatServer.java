@@ -1,3 +1,10 @@
+// --- PACKAGE SERVER ---
+
+/**
+ * Klasse ChatServer
+ *
+ * Verantwortlich für die Verwaltung von Client-Verbindungen und die Nachrichtenweiterleitung.
+ */
 package ode.chatconnect_odeproject.server;
 import java.io.*;
 import java.net.*;
@@ -7,10 +14,21 @@ import ode.chatconnect_odeproject.client.*;
 import ode.chatconnect_odeproject.ui.*;
 
 public class ChatServer {
+
+
+    /**
+     * Hauptmethode des Servers. Wartet auf eingehende Client-Verbindungen und verwaltet diese.
+     *
+     * @param args Argumente der Kommandozeile.
+     */
     private static Map<String, ObjectOutputStream> clients = new HashMap<>();
     private static Queue<String> availableNames = new LinkedList<>(Arrays.asList("Diyar", "Omar", "Mateusz"));
 
     public static void main(String[] args) {
+        /**
+         * Interner Thread zur Behandlung eines einzelnen Clients.
+         * Verarbeitet Nachrichten und stellt die Kommunikation mit anderen Clients sicher.
+         */
         try (ServerSocket serverSocket = new ServerSocket(12345)) {
             System.out.println("Server gestartet...");
 
@@ -29,15 +47,35 @@ public class ChatServer {
 
     // Thread für jeden Client
     static class ClientHandler extends Thread {
+
+        /**
+         * Verarbeitet eingehende Nachrichten eines Clients und sendet diese an den entsprechenden Empfänger.
+         */
+
+        /**
+         * Konstruktor, der den Socket des Clients speichert.
+         *
+         * @param socket Der Socket des verbundenen Clients.
+         */
         private Socket socket;
         private String username;
         private ObjectOutputStream out;
         private ObjectInputStream in;
 
+        /**
+         * Konstruktor, der den Socket des Clients speichert.
+         *
+         * @param socket Der Socket des verbundenen Clients.
+         */
         public ClientHandler(Socket socket) {
             this.socket = socket;
         }
 
+
+        /**
+         * Führt die Kommunikation mit dem Client aus. Verarbeitet Nachrichten,
+         * weist Benutzernamen zu und aktualisiert die Benutzerliste.
+         */
         public void run() {
             try {
                 // Streams für den Client
@@ -108,6 +146,14 @@ public class ChatServer {
             }
         }
 
+        /**
+         * Sendet eine Nachricht an einen bestimmten Client.
+         *
+         * @param receiver Der Empfänger der Nachricht.
+         * @param message  Die zu sendende Nachricht.
+         * @throws IOException Wenn beim Senden der Nachricht ein Fehler auftritt.
+         */
+
         // Nachricht an bestimmten Client senden
         private void sendMessageToClient(String receiver, String message) throws IOException {
             synchronized (clients) {
@@ -119,6 +165,11 @@ public class ChatServer {
                 }
             }
         }
+
+
+        /**
+         * Aktualisiert die Benutzerliste und sendet sie an alle verbundenen Clients.
+         */
 
         // Aktualisierte Benutzerliste an alle Clients senden
         private void broadcastUserList() {

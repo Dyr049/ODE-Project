@@ -1,3 +1,9 @@
+/**
+ * Klasse LoginManager
+ *
+ * Verantwortlich für das Laden, Überprüfen und Verwalten von Benutzeranmeldedaten.
+ */
+
 package ode.chatconnect_odeproject.client;
 
 import javafx.scene.control.Alert;
@@ -15,12 +21,26 @@ import ode.chatconnect_odeproject.server.*;
 
 public class LoginManager {
 
+    /**
+     * Initialisiert den Login-Manager und lädt Benutzerdaten aus der angegebenen Datei.
+     *
+     * @param filePath Der Pfad zur Datei mit den Benutzerdaten.
+     */
+
     private Map<String, String> userCredentials = new HashMap<>();
+
+
 
     public LoginManager(String filePath) {
         loadUserCredentials(filePath);
     }
 
+
+    /**
+     * Lädt Benutzerdaten aus der Datei und speichert sie in einer Map.
+     *
+     * @param filePath Der Pfad zur Datei mit den Benutzerdaten.
+     */
     private void loadUserCredentials(String filePath) {
         try {
             List<String> lines = Files.readAllLines(Paths.get(filePath));
@@ -35,9 +55,27 @@ public class LoginManager {
         }
     }
 
+
+
+    /**
+     * Überprüft, ob die eingegebenen Anmeldedaten gültig sind.
+     *
+     * @param username Der Benutzername.
+     * @param password Das Passwort.
+     * @return true, wenn die Anmeldedaten gültig sind, sonst false.
+     */
     public boolean isValidUser(String username, String password) {
         return userCredentials.containsKey(username) && userCredentials.get(username).equals(password);
     }
+
+    /**
+     * Handhabt die Registrierung eines neuen Benutzers.
+     *
+     * @param newUsername Der neue Benutzername.
+     * @param newPassword Das neue Passwort.
+     * @param registerStage Das Registrierungsfenster.
+     * @param filePath Der Pfad zur Datei mit den Benutzerdaten.
+     */
 
     public void handleRegistration(String newUsername, String newPassword, Stage registerStage, String filePath) {
         if (newUsername.isEmpty() || newPassword.isEmpty()) {
@@ -64,6 +102,10 @@ public class LoginManager {
         }
     }
 
+    /**
+     * Zeigt eine Fehlermeldung bei ungültigen Anmeldedaten an.
+     */
+
     public void showLoginError() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Login Error");
@@ -72,7 +114,12 @@ public class LoginManager {
         alert.showAndWait();
     }
 
-
+    /**
+     * Zeigt eine generische Benachrichtigung an.
+     *
+     * @param title Der Titel der Benachrichtigung.
+     * @param message Die Nachricht.
+     */
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

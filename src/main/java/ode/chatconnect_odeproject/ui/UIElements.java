@@ -1,3 +1,8 @@
+/**
+ * Klasse UIElements
+ *
+ * Stellt statische Methoden zur Erstellung von UI-Komponenten bereit.
+ */
 package ode.chatconnect_odeproject.ui;
 
 import javafx.scene.control.*;
@@ -8,6 +13,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 public class UIElements {
+
+    /**
+     * Erstellt die linke Seitenleiste mit Benutzerdetails.
+     *
+     * @param username Der Benutzername.
+     * @return Ein AnchorPane mit der linken Seitenleiste.
+     */
 
 
 
@@ -52,6 +64,13 @@ public class UIElements {
         return paneLeft;
     }
 
+
+    /**
+     * Erstellt die mittlere Pane mit einer Kontaktliste und einer Suchleiste.
+     *
+     * @param contactList Eine VBox, die die Kontaktliste enthält.
+     * @return Ein AnchorPane, das die mittlere Pane mit Kontaktliste und Suchleiste darstellt.
+     */
     // Erstelle die mittlere Kontaktliste
     public static AnchorPane createMiddlePane(VBox contactList) {
         AnchorPane paneMiddle = new AnchorPane();
@@ -82,6 +101,16 @@ public class UIElements {
         paneMiddle.getChildren().addAll(contactList, txt_search, icon_search);
         return paneMiddle;
     }
+    /**
+     * Erstellt die rechte Pane, die die Chat-Ansicht, die Nachrichtenanzeige und die Eingabefelder enthält.
+     *
+     * @param txt_chatArea      Das Textfeld, in dem Nachrichten angezeigt werden.
+     * @param username          Der Benutzername, der als Absender angezeigt wird.
+     * @param sendButton        Der Button, mit dem Nachrichten gesendet werden können.
+     * @param messageField      Das Textfeld, in das Nachrichten eingegeben werden.
+     * @param lbl_chatPersonName Das Label, das den Namen des aktuellen Chat-Partners anzeigt.
+     * @return Ein AnchorPane, das die rechte Pane mit der Chat-Funktionalität darstellt.
+     */
 
     // Erstelle das rechte Chat-Fenster
     public static AnchorPane createRightPane(TextArea txt_chatArea, String username, Button sendButton, TextField messageField, Label lbl_chatPersonName) {
