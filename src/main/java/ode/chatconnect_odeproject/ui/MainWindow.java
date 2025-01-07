@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -51,8 +52,14 @@ public class MainWindow {
         mainLayout.setPrefSize(900, 600);
 
         contactList = new VBox();
+        TextField txt_search = new TextField();
+        txt_search.textProperty().addListener((observable, oldValue, newValue) -> filterContactList(newValue));
+
+        VBox contactPane = new VBox();
+        contactPane.getChildren().addAll(txt_search, contactList);
+
         AnchorPane paneLeft = UIElements.createLeftPane(username);
-        AnchorPane paneMiddle = UIElements.createMiddlePane(contactList);
+        AnchorPane paneMiddle = UIElements.createMiddlePane(contactPane, txt_search);
 
         chatBox = new VBox();
         chatBox.setSpacing(10); // Abstand zwischen Nachrichten
@@ -130,6 +137,28 @@ public class MainWindow {
             }
         }
     }
+
+    /**
+     * Filtert die Kontaktliste basierend auf dem Suchtext.
+     *
+     * @param searchText Der eingegebene Suchtext.
+     */
+    private void filterContactList(String searchText) {
+        contactList.getChildren().clear();
+        String lowerCaseSearchText = searchText.toLowerCase();
+
+        for (Map.Entry<String, StringBuilder> entry : chatHistories.entrySet()) {
+            String user = entry.getKey();
+            if (user.toLowerCase().contains(lowerCaseSearchText)) {
+                Button userButton = new Button(" " + user);
+                userButton.setPrefSize(190, 40);
+                userButton.setId("btn_person");
+                contactList.getChildren().add(userButton);
+                userButton.setOnAction(e -> setChatPartner(user));
+            }
+        }
+    }
+
 
     /**
      * Setzt den aktuellen Chat-Partner und zeigt den Verlauf an.

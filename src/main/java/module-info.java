@@ -4,6 +4,7 @@ module ode.chatconnect_odeproject {
 
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
+    requires java.desktop;
 
 
     opens ode.chatconnect_odeproject to javafx.fxml;

@@ -5,6 +5,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.geometry.Pos;
+import javafx.scene.text.Text;
 
 public class UIElements {
 
@@ -56,7 +57,7 @@ public class UIElements {
      * @param contactList Eine VBox, die die Kontaktliste enthält.
      * @return Ein AnchorPane, das die mittlere Pane mit Kontaktliste und Suchleiste darstellt.
      */
-    public static AnchorPane createMiddlePane(VBox contactList) {
+    public static AnchorPane createMiddlePane(VBox contactList, TextField txt_search) {
         AnchorPane paneMiddle = new AnchorPane();
         paneMiddle.setPrefSize(224, 600);
         paneMiddle.setId("pane_middle");
@@ -73,12 +74,13 @@ public class UIElements {
         icon_search.setLayoutX(30);
         icon_search.setLayoutY(32);
 
-        TextField txt_search = new TextField();
+
         txt_search.setPromptText("suchen...");
         txt_search.setPrefSize(190, 29);
         txt_search.setLayoutX(15);
         txt_search.setLayoutY(21);
         txt_search.setId("txt_search");
+
 
         paneMiddle.getChildren().addAll(contactList, txt_search, icon_search);
         return paneMiddle;
