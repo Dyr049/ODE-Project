@@ -128,4 +128,25 @@ public class LoginManager {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    private void changePassord(String username, String oldPassword, String newPassword, String filePath) {
+        if(userCredentials.containsKey(username) && userCredentials.get(username).equals(oldPassword)) {
+            userCredentials.remove(username);
+            userCredentials.remove(oldPassword);
+            try {
+                Files.write(Paths.get(filePath),
+                        (username + ":" + newPassword + System.lineSeparator()).getBytes(),
+                        StandardOpenOption.APPEND);
+
+                userCredentials.put(username, newPassword);
+
+                showAlert("Erfolg", "Passwort wurde erfolgreich geändert.");
+
+            } catch (IOException e) {
+                showAlert("Error", "Passwort konnte nicht erfolgreich geändert werden.");
+            }
+        }
+    }
+
+
 }

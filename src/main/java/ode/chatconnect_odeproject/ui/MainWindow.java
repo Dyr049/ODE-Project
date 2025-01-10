@@ -9,11 +9,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MainWindow {
@@ -49,6 +51,8 @@ public class MainWindow {
 
         HBox mainLayout = new HBox();
         mainLayout.setPrefSize(900, 600);
+        Button btn_einstellungen = new Button("Einstellungen");
+
 
         contactList = new VBox();
         TextField txt_search = new TextField();
@@ -57,7 +61,7 @@ public class MainWindow {
         VBox contactPane = new VBox();
         contactPane.getChildren().addAll(txt_search, contactList);
 
-        AnchorPane paneLeft = UIElements.createLeftPane(username);
+        AnchorPane paneLeft = UIElements.createLeftPane(username, btn_einstellungen);
         AnchorPane paneMiddle = UIElements.createMiddlePane(contactList, txt_search);
 
         chatBox = new VBox();
@@ -77,7 +81,9 @@ public class MainWindow {
         primaryStage.setTitle("Chat App");
         primaryStage.show();
 
-        connectToServer(txt_message, btn_senden);
+        connectToServer(txt_message, btn_senden, btn_einstellungen);
+
+
     }
 
     /**
@@ -86,7 +92,7 @@ public class MainWindow {
      * @param txt_message Das Textfeld für die Eingabe von Nachrichten.
      * @param btn_senden  Der Button zum Senden von Nachrichten.
      */
-    private void connectToServer(TextField txt_message, Button btn_senden) {
+    private void connectToServer(TextField txt_message, Button btn_senden, Button btn_einstellungen) {
         try {
             Socket socket = new Socket("localhost", 12345);
             out = new ObjectOutputStream(socket.getOutputStream());
@@ -115,7 +121,108 @@ public class MainWindow {
         }
 
         btn_senden.setOnAction(e -> sendMessage(txt_message.getText()));
+        Stage einstellung = new Stage();
+        btn_einstellungen.setOnAction(e -> einstellungen(einstellung, username));
     }
+
+    public void einstellungen(Stage einstellung, String username) {
+        VBox einstellungen = new VBox();
+        einstellungen.setStyle("-fx-padding: 10;");
+
+        TextField oldPassword = new TextField();
+        oldPassword.setPromptText("Enter your old Password here: ");
+
+        TextField newPassword = new TextField();
+        newPassword.setPromptText("Enter your new Password here: ");
+
+        Button passwortNeu = new Button("Send");
+        passwortNeu.setOnAction(e -> changePassword(username, oldPassword.getText(), newPassword.getText(), "users.txt"));
+
+        einstellungen.getChildren().addAll(oldPassword, newPassword, passwortNeu);
+
+        Scene scene = new Scene(einstellungen, 400, 300); // Szene erstellen
+        einstellung.setTitle("Passwort aendern"); // Fenstertitel
+        einstellung.setScene(scene);
+        einstellung.show();
+
+    }
+
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+
+    private void changePassword(String username, String oldPassword, String newPassword, String filePath) {
+        /*
+        Map<String, String> userCredentials = new HashMap<>();
+        try {
+            List<String> lines = Files.readAllLines(Paths.get(filePath));
+            for (String line : lines) {
+                String[] parts = line.split(":", 2);
+                if (parts.length == 2) {
+                    userCredentials.put(parts[0].trim(), parts[1].trim());
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Fehler beim Laden der Benutzerdatei: " + e.getMessage());
+        }
+
+        if(userCredentials.containsKey(username) && userCredentials.get(username).equals(oldPassword)) {
+            userCredentials.remove(username);
+            userCredentials.remove(oldPassword);
+            try {
+                Files.write(Paths.get(filePath),
+                        (username + ":" + newPassword + System.lineSeparator()).getBytes(),
+                        StandardOpenOption.APPEND);
+
+                userCredentials.put(username, newPassword);
+
+                showAlert("Erfolg", "Passwort wurde erfolgreich geändert.");
+
+            } catch (IOException e) {
+                showAlert("Error", "Passwort konnte nicht erfolgreich geändert werden.");
+            }
+        */
+
+
+        try {
+            File userfile = new File(filePath);
+            FileReader fr = new FileReader(userfile);
+            BufferedReader Reader = new BufferedReader(fr);
+            String ln = "\n";
+            String Wanted = username + ":" + oldPassword;
+            StringBuilder Output = new StringBuilder();
+            String line;
+            Boolean aenderung = false;
+            while ((line = Reader.readLine()) != null) {
+                    if (line.equals(Wanted)) {
+                        Output.append(line.replace(oldPassword, newPassword) + ln);
+                        aenderung = true;
+                    } else {
+                        Output.append(line + ln);
+                    }
+            }
+            if (aenderung == false) {
+                showAlert("Error", "Falsches Passwort eingegeben");
+                return;
+            }
+            FileOutputStream fileOut = new FileOutputStream(userfile);
+            fileOut.write(Output.toString().getBytes());
+            fileOut.close();
+            showAlert("Erfolg", "Passwort wurde erfolgreich geändert.");
+        } catch (IOException ex) {
+
+            showAlert("Error", "Passwort konnte nicht erfolgreich geändert werden.");
+        }
+
+
+    }
+
 
     /**
      * Initialisiert die Chat-Verläufe und fügt die Benutzer zur Kontaktliste hinzu.

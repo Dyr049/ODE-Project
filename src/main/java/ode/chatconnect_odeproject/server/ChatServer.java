@@ -89,15 +89,14 @@ public class ChatServer {
                         socket.close();
                         return;
                     }
-                    username = availableNames.poll();
+
+
                 }
 
                 System.out.println("Benutzername zugewiesen: " + username);
 
-                // Füge den Benutzer zur Client-Liste hinzu
-                synchronized (clients) {
-                    clients.put(username, out);
-                }
+
+
 
                 // Sende den zugewiesenen Namen an den Client
                 out.writeObject(username);
@@ -109,6 +108,14 @@ public class ChatServer {
                 // Nachrichten vom Client empfangen
                 String message;
                 while ((message = (String) in.readObject()) != null) {
+                    if (username == null) {
+                        username = message;
+                        // Füge den Benutzer zur Client-Liste hinzu
+                        synchronized (clients) {
+                            clients.put(username, out);
+                        }
+                        continue;
+                    }
                     System.out.println("Nachricht von " + username + ": " + message);
 
                     // Nachricht formatieren (z. B. "Empfänger: Nachricht")

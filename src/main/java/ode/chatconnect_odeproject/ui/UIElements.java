@@ -14,7 +14,7 @@ public class UIElements {
      * @param username Der Benutzername.
      * @return Ein AnchorPane mit der linken Seitenleiste.
      */
-    public static AnchorPane createLeftPane(String username) {
+    public static AnchorPane createLeftPane(String username, Button btn_einstellungen) {
         AnchorPane paneLeft = new AnchorPane();
         paneLeft.setPrefSize(139, 600);
         paneLeft.setId("pane_left");
@@ -40,7 +40,7 @@ public class UIElements {
         icon_einstellungen.setLayoutX(25);
         icon_einstellungen.setLayoutY(280);
 
-        Button btn_einstellungen = new Button("Einstellungen");
+
         btn_einstellungen.setLayoutX(40);
         btn_einstellungen.setLayoutY(280);
         btn_einstellungen.setId("btn_einstellungen");
