@@ -125,18 +125,26 @@ public class MainWindow {
         btn_einstellungen.setOnAction(e -> einstellungen(einstellung, username));
     }
 
+
+    /**
+     * Erstellt ein neues Fenster zum ändern des Passworts beim klicken des Buttons einstellungen
+     *
+     * @param einstellung Die Stage, die angezeigt wird.
+     * @param username  Der Username
+     */
+
     public void einstellungen(Stage einstellung, String username) {
         VBox einstellungen = new VBox();
         einstellungen.setStyle("-fx-padding: 10;");
 
-        TextField oldPassword = new TextField();
+        TextField oldPassword = new TextField(); //TextField altes passwort
         oldPassword.setPromptText("Enter your old Password here: ");
 
-        TextField newPassword = new TextField();
+        TextField newPassword = new TextField(); //TextField neues passwort
         newPassword.setPromptText("Enter your new Password here: ");
 
         Button passwortNeu = new Button("Send");
-        passwortNeu.setOnAction(e -> changePassword(username, oldPassword.getText(), newPassword.getText(), "users.txt"));
+        passwortNeu.setOnAction(e -> changePassword(username, oldPassword.getText(), newPassword.getText(), "users.txt")); //Beim drücken des Buttons Send wird die Methode changePassword aufgerufen
 
         einstellungen.getChildren().addAll(oldPassword, newPassword, passwortNeu);
 
@@ -147,6 +155,12 @@ public class MainWindow {
 
     }
 
+    /**
+     * Zeigt eine generische Benachrichtigung an.
+     *
+     * @param title Der Titel der Benachrichtigung.
+     * @param message Die Nachricht.
+     */
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -156,58 +170,33 @@ public class MainWindow {
         alert.showAndWait();
     }
 
-
+    /**
+     * Erstellt ein neues Fenster zum ändern des Passworts beim klicken des Buttons einstellungen
+     *
+     * @param username Der Username
+     * @param oldPassword  Altes Passwort
+     * @param newPassword  Neues Passwort
+     * @param filePath  Der Pfad des Files, wo alle user und passwörter stehen
+     */
     private void changePassword(String username, String oldPassword, String newPassword, String filePath) {
-        /*
-        Map<String, String> userCredentials = new HashMap<>();
-        try {
-            List<String> lines = Files.readAllLines(Paths.get(filePath));
-            for (String line : lines) {
-                String[] parts = line.split(":", 2);
-                if (parts.length == 2) {
-                    userCredentials.put(parts[0].trim(), parts[1].trim());
-                }
-            }
-        } catch (IOException e) {
-            System.err.println("Fehler beim Laden der Benutzerdatei: " + e.getMessage());
-        }
-
-        if(userCredentials.containsKey(username) && userCredentials.get(username).equals(oldPassword)) {
-            userCredentials.remove(username);
-            userCredentials.remove(oldPassword);
-            try {
-                Files.write(Paths.get(filePath),
-                        (username + ":" + newPassword + System.lineSeparator()).getBytes(),
-                        StandardOpenOption.APPEND);
-
-                userCredentials.put(username, newPassword);
-
-                showAlert("Erfolg", "Passwort wurde erfolgreich geändert.");
-
-            } catch (IOException e) {
-                showAlert("Error", "Passwort konnte nicht erfolgreich geändert werden.");
-            }
-        */
-
-
         try {
             File userfile = new File(filePath);
             FileReader fr = new FileReader(userfile);
             BufferedReader Reader = new BufferedReader(fr);
             String ln = "\n";
-            String Wanted = username + ":" + oldPassword;
+            String Wanted = username + ":" + oldPassword;   //in der Datei wird nach dem exakten Usernamen und dem exakten alten Passwort gesucht
             StringBuilder Output = new StringBuilder();
             String line;
             Boolean aenderung = false;
-            while ((line = Reader.readLine()) != null) {
-                    if (line.equals(Wanted)) {
-                        Output.append(line.replace(oldPassword, newPassword) + ln);
-                        aenderung = true;
+            while ((line = Reader.readLine()) != null) {   //Wenn die gelesene Zeile nicht NULL ist
+                    if (line.equals(Wanted)) { //Wenn die Zeile genau gleich ist
+                        Output.append(line.replace(oldPassword, newPassword) + ln); //Wird das alte Passwort gelöscht und mit dem neuen Passwort überschrieben
+                        aenderung = true; //Variable Änderung wird true
                     } else {
-                        Output.append(line + ln);
+                        Output.append(line + ln); //Sonst schreibt es dieselbe line hin und neue Zeile
                     }
             }
-            if (aenderung == false) {
+            if (aenderung == false) {   //Wenn im gesamten durchlauf keine änderung stattgefunden hat wird eine error-message geworfen
                 showAlert("Error", "Falsches Passwort eingegeben");
                 return;
             }
@@ -216,7 +205,6 @@ public class MainWindow {
             fileOut.close();
             showAlert("Erfolg", "Passwort wurde erfolgreich geändert.");
         } catch (IOException ex) {
-
             showAlert("Error", "Passwort konnte nicht erfolgreich geändert werden.");
         }
 
